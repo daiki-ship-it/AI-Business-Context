@@ -4,8 +4,8 @@ name: Notion sync
 on:
   workflow_dispatch: # 手動実行（GitHub の Actions タブから）
   schedule:
-    # 30分ごと（UTC）。日本時間に合わせて変えてよい
-    - cron: "*/30 * * * *"
+    # 毎日 04:00 日本時間（JST）≒ 前日 19:00 UTC。GitHub の cron は UTC 基準。
+    - cron: "0 19 * * *"
 
 permissions:
   contents: write

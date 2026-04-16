@@ -140,7 +140,9 @@ node scripts/notion-sync.mjs
 3. **Run workflow** で手動実行。  
 4. 緑で終われば、そのあと **コードの `context/notion-tasks.generated.md`** が更新されているはず。
 
-**定期実行:** `.github/workflows/notion-sync.yml` の `schedule` は **30分ごと（UTC）** にしてある。変えたければ cron を編集する。
+**定期実行:** `.github/workflows/notion-sync.yml` の `schedule` は **毎日 04:00（日本時間・JST）** 前後に1回（UTC `0 19 * * *`）。変えたければ cron を編集する。
+
+**補足（ローカルと GitHub）:** 定期実行は **GitHub のサーバー**上で動き、**リモートの `main` にコミットされる**。**あなたの Mac のフォルダは自動では更新されない**。Cursor を閉じていても GitHub 側の同期は進むが、手元のファイルを揃えるには **`git pull`** が必要。
 
 ---
 
