@@ -1,0 +1,11 @@
+{
+  "name": "ai-jigyo-context",
+  "private": true,
+  "description": "Notion → Markdown 同期スクリプト用",
+  "scripts": {
+    "sync:notion": "node scripts/notion-sync.mjs"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15"
+  }
+}
