@@ -14,7 +14,7 @@
 
 Notion を更新すると、**GitHub Actions で `notion-tasks.generated.md` が更新される**（設定後）。Cursor では **`@context/notion-tasks.generated.md`** で最新タスク表を参照できる。
 
-**Mac のフォルダまで自動で揃えたい:** Git は **リモート（GitHub）だけ**を更新するので、手元は **`git pull` が必要**。朝に自動化する手順は [docs/LOCAL_AUTO_PULL.md](docs/LOCAL_AUTO_PULL.md)（`launchd` + `scripts/git-pull-repo.sh`）。
+**Mac のフォルダまで自動で揃えたい:** Git は **リモート（GitHub）だけ**を更新するので、手元は **`git pull` が必要**。**Cursor でこのフォルダを開いたときに自動 `git pull`** する設定を入れてある（`.vscode/tasks.json`）。詳細と代替手段は [docs/LOCAL_AUTO_PULL.md](docs/LOCAL_AUTO_PULL.md)。
 
 ## 運用ルール（1人運用向け）
 

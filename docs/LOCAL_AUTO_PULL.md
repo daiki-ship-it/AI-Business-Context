@@ -1,8 +1,22 @@
-# Mac で「朝、ローカルも自動で git pull」する
+# 手元のフォルダを GitHub に追従させる（`git pull`）
 
-**背景:** Notion → GitHub の同期は **GitHub 上**で終わります。**Mac のフォルダ**を勝手に更新する機能は Git にないので、**この Mac から `git pull` を自動実行**します。
+**背景:** Notion → GitHub の同期は **GitHub 上**で終わります。**Mac のフォルダ**を勝手に更新する機能は Git にないので、**どこかのタイミングで `git pull` が必要**です。
 
-**おすすめの時刻:** GitHub Actions が **毎朝 4:00（JST）** に Notion を取り込んだあとで、**6:00（JST）** などに pull すると、仕事を始める前にローカルが揃いやすいです。
+## いちばん手軽：Cursor を開いたときに自動 `git pull`（おすすめ）
+
+このリポジトリには **`.vscode/tasks.json`** があり、**ワークスペース（このフォルダ）を Cursor で開いた直後**に `git pull --ff-only` が走る設定になっています。
+
+1. Cursor で **このリポジトリのルート**（`AI事業コンテクスト` 自体）をフォルダとして開く。  
+2. 初回だけ「自動タスクを許可しますか？」のような確認が出たら **許可**する。  
+3. 以降、**Cursor を開くたび**に手元が GitHub の `main` に追従しやすくなる（ネットワークと Git の認証が通る前提）。
+
+**注意:** 親フォルダだけ開いていると `${workspaceFolder}` がずれるので、**必ずこのリポジトリのフォルダをワークスペースのルートに**してください。
+
+---
+
+## 別手段：朝だけ Mac が自動で pull（launchd）
+
+Cursor を開かない日でも手元を揃えたい場合。GitHub Actions が **毎朝 4:00（JST）** に取り込んだあと、**6:00（JST）** などに `git pull` する想定で使う。
 
 ---
 
@@ -72,12 +86,12 @@ launchctl unload ~/Library/LaunchAgents/com.ai-project-context.gitpull.plist
 |------|------|
 | **スリープ中** | 指定時刻に Mac が寝ていると、その回は**飛ぶ**ことがある。起動後に手動 `git pull` するか、**ログイン時に実行**する plist に変える手もある。 |
 | **未コミットの変更** | ローカルで編集したままだと `git pull --ff-only` が**失敗**することがある。基本は **このリポジトリでは pull 専用・編集は別ブランチ**などにすると安全。 |
-| **Cursor** | Cursor 自体が「起動したら pull」は**標準ではない**。上記の定期 pull で実質カバーする。 |
+| **Cursor の自動タスク** | 初回だけ「自動タスクを許可」が必要。ワークスペースの**信頼**や Git の認証で止まることがある。 |
 
 ---
 
 ## 4. まとめ
 
 - **GitHub:** Notion 同期済みの「正」  
-- **Mac:** `launchd` + `scripts/git-pull-repo.sh` で **朝だけ自動 pull** が現実的  
-- **Cursor:** 開いたときに最新が見えればよいなら、**朝の自動 pull** でほぼ足りる  
+- **手元を Cursor 起動時に追従:** **`.vscode/tasks.json` の folderOpen** が第一候補  
+- **補助:** `launchd` で朝に pull（Cursor を開かない日用）  
