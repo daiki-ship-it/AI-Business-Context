@@ -79,9 +79,38 @@ git push -u origin main
 
 ## ステップ 6：Actions が書き込めるように設定する
 
-1. 同じく **Settings → Actions → General** を開く。  
-2. **Workflow permissions** で **Read and write permissions** を選び保存する。  
-   - これで「同期結果を push できる」ようになる。
+「General」という文字がメニューに**出ないことがあります**（UI の言語や GitHub の更新で、サイドバーの並びが違うため）。**やりたいことは次の1つだけ**です。
+
+- **`GITHUB_TOKEN` に「リポジトリへ書き込み」を許可する**（＝ Workflow permissions を Read and write にする）
+
+### いちばん確実：URL で開く
+
+ブラウザのアドレスバーに、**自分のリポジトリ**向けに次を入れて開く（`OWNER` / `REPO` を置き換え）。
+
+`https://github.com/OWNER/REPO/settings/actions`
+
+例（このプロジェクトを GitHub にそのまま置いている場合）:
+
+`https://github.com/daiki-ship-it/AI-Project-Context/settings/actions`
+
+このページを**下までスクロール**し、**Workflow permissions**（日本語だと「ワークフローの権限」など）のブロックを探す。
+
+- **Read and write permissions**（読み取りと書き込み）を選ぶ  
+- **Save** を押す  
+
+### メニューから辿る場合
+
+1. リポジトリの **Settings**（設定）を開く。  
+   - タブが見えないときは、リポジトリ名の横の **…** メニューから **Settings** を選ぶ。  
+   - **自分のリポジトリの管理者**でないと Settings が出ません。
+2. 左サイドバーの **「Code and automation」／コードと自動化** のあたりにある **Actions** をクリックする。  
+3. サブメニューに **General／一般** があればそれを選ぶ。**なくても**、いま開いているページが Actions の「一般」設定のことが多い。  
+4. ページ内の **Workflow permissions** で **Read and write permissions** → **Save**。
+
+### それでも見つからないとき
+
+- 組織のリポジトリだと、**組織のポリシー**で上書きされ、自分では変更できないことがあります（組織の管理者に確認）。  
+- 個人リポジトリでも、**別の場所に移動している**場合は [公式ドキュメント（リポジトリの Actions 設定）](https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository) の「`GITHUB_TOKEN` の権限を設定する」付近を参照する。
 
 ---
 
