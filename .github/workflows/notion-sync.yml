@@ -18,7 +18,19 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
+
+      - name: Check Actions secrets exist
+        run: |
+          if [ -z "${{ secrets.NOTION_TOKEN }}" ]; then
+            echo "::error::Secrets に NOTION_TOKEN がありません（空です）。Settings → Secrets and variables → Actions で追加してください。"
+            exit 1
+          fi
+          if [ -z "${{ secrets.NOTION_DATABASE_ID }}" ]; then
+            echo "::error::Secrets に NOTION_DATABASE_ID がありません（空です）。"
+            exit 1
+          fi
+          echo "Secrets の名前は OK（値は表示しません）。"
 
       - name: Install dependencies
         run: npm ci
@@ -29,8 +41,9 @@ jobs:
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
         run: node scripts/notion-sync.mjs
 
-      - name: Commit if changed
+      - name: Commit and push if changed
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add context/notion-tasks.generated.md

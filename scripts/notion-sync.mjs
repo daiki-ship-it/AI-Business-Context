@@ -146,10 +146,13 @@ ${body.join("\n")}
 }
 
 async function main() {
-  const token = process.env.NOTION_TOKEN;
-  const rawId = process.env.NOTION_DATABASE_ID;
+  const token = String(process.env.NOTION_TOKEN || "").trim().replace(/^["']|["']$/g, "");
+  const rawId = String(process.env.NOTION_DATABASE_ID || "").trim().replace(/^["']|["']$/g, "");
   if (!token || !rawId) {
     console.error("環境変数 NOTION_TOKEN と NOTION_DATABASE_ID が必要です。");
+    console.error(
+      "GitHub の場合: Settings → Secrets and variables → Actions に両方あるか確認してください。"
+    );
     process.exit(1);
   }
 
@@ -174,6 +177,23 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.error(e.message || e);
+  console.error("--- Notion sync 失敗 ---");
+  if (e && typeof e === "object") {
+    if ("code" in e) console.error("Notion code:", e.code);
+    if ("status" in e) console.error("HTTP status:", e.status);
+    if ("body" in e)
+      try {
+        console.error("Notion body:", JSON.stringify(e.body, null, 2));
+      } catch {
+        console.error("Notion body:", e.body);
+      }
+    if (e.message) console.error("message:", e.message);
+  } else {
+    console.error(e);
+  }
+  console.error("");
+  console.error("よくある原因:");
+  console.error("- object_not_found: データベースIDが違う／ページIDを渡している／表に「接続」していない");
+  console.error("- unauthorized: NOTION_TOKEN が違う・無効");
   process.exit(1);
 });
