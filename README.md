@@ -10,7 +10,7 @@
 | **締切・進捗・やること一覧（編集する場所）** | [**Notion：AIローンチ進捗管理**](https://www.notion.so/AI-33e2623b5cc0803e9959f49c7f8b3a52?source=copy_link) |
 | **Notion の写し（自動・読み取り専用）** | [context/notion-tasks.generated.md](context/notion-tasks.generated.md)（[同期のセットアップ](docs/NOTION_SYNC_SETUP.md)） |
 | **事業コンテンツ**（商品・経歴・ICP など） | 下記 `ssot/` |
-| **Cursor / AI に渡す短いメモ（任意・手動）** | [context/current-phase.md](context/current-phase.md) |
+| **Cursor / AI 向けメモ（正本ではない・ブロッカー等のみ）** | [context/current-phase.md](context/current-phase.md) |
 
 Notion を更新すると、**GitHub Actions で `notion-tasks.generated.md` が更新される**（設定後）。Cursor では **`@context/notion-tasks.generated.md`** で最新タスク表を参照できる。
 
@@ -24,14 +24,15 @@ Notion を更新すると、**GitHub Actions で `notion-tasks.generated.md` が
 3. **ICP（ペルソナ）は `ssot/persona-icp.md` のみ。** `career.md` の実話と矛盾させない。
 4. **商品の週次・フローは `ssot/product-ai-accompany.md` のみ。** キャッチやゴールを変えたらここを先に直す。
 5. 将来ファイルが増えても、**新規は `ssot/` 配下に置き、下の「ファイル地図」に1行追加する**（検索の入口を増やしすぎない）。
-6. **タスクの締切・完了は Notion が正。** リポジトリには [context/notion-tasks.generated.md](context/notion-tasks.generated.md) が **自動同期**で追従する（手で編集しない）。自分用の一言メモは [context/current-phase.md](context/current-phase.md)。
+6. **タスクの締切・完了は Notion が正。** リポジトリには [context/notion-tasks.generated.md](context/notion-tasks.generated.md) が **自動同期**で追従する（手で編集しない）。[context/current-phase.md](context/current-phase.md) には **タスク一覧やフェーズの複製を書かない**（ブロッカー等の任意メモのみ）。
+7. **Notion のタスクDBのメモ欄に、`ssot/*.md` の全文を貼らない。** 必要なら「→ `ssot/brand.md`」など **参照1行**にし、[context/notion-tasks.generated.md](context/notion-tasks.generated.md) の写しに二重の正を増やさない。
 
 ## ファイル地図（どこに何があるか）
 
 | ファイル | 中身 |
 |----------|------|
 | [context/notion-tasks.generated.md](context/notion-tasks.generated.md) | Notion タスク表の自動スナップショット（**編集禁止**） |
-| [context/current-phase.md](context/current-phase.md) | いまのフェーズ・焦点の短いメモ（任意・手動） |
+| [context/current-phase.md](context/current-phase.md) | ブロッカー等の任意メモ（タスク・フェーズの複製は書かない） |
 | [docs/NOTION_SYNC_SETUP.md](docs/NOTION_SYNC_SETUP.md) | Notion ↔ GitHub 自動同期のセットアップ手順 |
 | [docs/LOCAL_AUTO_PULL.md](docs/LOCAL_AUTO_PULL.md) | Mac で朝に自動 `git pull` する（任意） |
 | [ssot/brand.md](ssot/brand.md) | 表示名・事業コンセプト |

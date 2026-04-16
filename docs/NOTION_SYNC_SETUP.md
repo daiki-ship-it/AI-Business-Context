@@ -161,5 +161,8 @@ node scripts/notion-sync.mjs
 | ファイル | 役割 |
 |----------|------|
 | `context/notion-tasks.generated.md` | **Notion から自動。** 手で直さない。 |
-| `context/current-phase.md` | **自分用メモ。** 自動では上書きしない。 |
+| `context/current-phase.md` | **任意メモ（ブロッカー等）。** タスク・フェーズの複製は書かない。自動では上書きしない。 |
 | `ssot/*.md` | **事業の正本。** Notion とは別。 |
+
+**SSOT:** データベースの **メモ**欄に `ssot/*.md` の全文を貼らない（`notion-tasks.generated.md` に二重の正が出る）。必要なら「→ `ssot/brand.md`」など参照1行にする。  
+既に全文が入っている行は、Notion 側でメモを差し替えたあと **同期を1回走らせる**と写しが更新される。
