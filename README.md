@@ -35,7 +35,11 @@ Notion を更新すると、**GitHub Actions で `notion-tasks.generated.md` が
 | [context/current-phase.md](context/current-phase.md) | ブロッカー等の任意メモ（タスク・フェーズの複製は書かない） |
 | [docs/NOTION_SYNC_SETUP.md](docs/NOTION_SYNC_SETUP.md) | Notion ↔ GitHub 自動同期のセットアップ手順 |
 | [docs/LOCAL_AUTO_PULL.md](docs/LOCAL_AUTO_PULL.md) | Mac で朝に自動 `git pull` する（任意） |
-| [ssot/brand.md](ssot/brand.md) | 表示名・事業コンセプト |
+| [docs/business-program-idea-current.md](docs/business-program-idea-current.md) | 外向けLPの**参照入口**（正本は `ssot/`、HTML は人間用） |
+| [docs/exports-for-human/](docs/exports-for-human/) | ブラウザ用HTMLなど（`.cursorignore` でインデックス対象外にしやすい） |
+| [ssot/brand.md](ssot/brand.md) | 表示名などブランド要素（**事業コンセプト本文の正本は** [ssot/business-concept.md](ssot/business-concept.md)） |
+| [docs/契約書_AI業務再設計30日伴走.md](docs/契約書_AI業務再設計30日伴走.md) | 法的条項の正本 |
+| [ssot/provider-contact.md](ssot/provider-contact.md) | 乙の連絡先・記入用 HTML との手順（条文の正本は上記契約書のみ） |
 | [ssot/career.md](ssot/career.md) | **正本ではない** — [`My context/career-timeline.md`](../My%20context/career-timeline.md) への参照用 |
 | [ssot/profile.md](ssot/profile.md) | USP・キャラ・約束（事実の重複なし） |
 | [ssot/persona-icp.md](ssot/persona-icp.md) | 対象者・ペルソナ |
