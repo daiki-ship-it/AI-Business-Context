@@ -1,7 +1,7 @@
 # 対象者（ICP）・ペルソナ
 
 **定義:** ターゲットは「過去の自分」に近い属性・心理を持つ層。  
-顧客像は [career.md](career.md) の実話と**矛盾させない**。ペルソナの複製はこのファイル以外に作らない。事業コンセプトとコアメッセージの正本は [business-concept.md](business-concept.md)。
+顧客像は [../../My context/career-timeline.md](../../My%20context/career-timeline.md) の事実（および [../../My context/context.md](../../My%20context/context.md) の要約）と**矛盾させない**。辿り口: [career.md](career.md)。ペルソナの複製はこのファイル以外に作らない。事業コンセプトとコアメッセージの正本は [business-concept.md](business-concept.md)。
 
 
 ---
